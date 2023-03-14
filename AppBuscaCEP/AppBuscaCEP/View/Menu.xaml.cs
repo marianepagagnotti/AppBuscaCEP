@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace AppBuscaCEP.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -19,7 +20,19 @@ namespace AppBuscaCEP.View
 
         private void Button_Clicked(object sender, EventArgs e)
         {
+            
+        }
 
+        private void CepPorLogradouro(object sender, EventArgs e)
+        {
+            try
+            {
+                Navigation.PushAsync(new CepPorLogradouro());
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("Ops", ex.Message, "OK");
+            }
         }
     }
 }
