@@ -8,37 +8,68 @@ using System.Threading.Tasks;
 using AppBuscaCEP.View;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Collections.ObjectModel;
 
 namespace AppBuscaCEP.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BairrosPorCidade : ContentPage
     {
+        ObservableCollection<Cidade> lista_cidades = new ObservableCollection<Cidade>();
+        ObservableCollection<Bairro> lista_bairros = new ObservableCollection<Bairro>();
+
         public BairrosPorCidade()
         {
             InitializeComponent();
+            
+            pck_cidade.ItemsSource = lista_cidades;
+            lst_bairros.ItemsSource = lista_bairros;
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
-        {
 
+        
+
+        private async void pck_estado_SelectedIndexChanged(object sender, EventArgs e)
+        {
             try
             {
-                carregando.IsRunning = true;
 
-                //List<Bairro> arr_bairros = await DataService.GetBairrosByIdCidade(txt_cidades.Text);
+                Picker disparador = sender as Picker;
 
-                //lst_bairros.ItemsSource = arr_bairros;
+                string estado_selecionado = disparador.SelectedItem as string;
+
+                List<Cidade> arr_cidades = await DataService.GetCidadeByEstado(estado_selecionado);
+                lista_cidades.Clear();
+
+                arr_cidades.ForEach(i => lista_cidades.Add(i));
 
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Ops", ex.Message, "OK");
+                await DisplayAlert("Erro", ex.Message, "Ok");
             }
-            finally
+
+        }
+
+        private async void pck_cidade_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
             {
-                carregando.IsRunning = false;
+
+                Picker disparador = sender as Picker;
+
+                int id_cidade = disparador.SelectedIndex;
+
+                List<Bairro> arr_bairros = await DataService.GetBairrosByIdCidade(id_cidade);
+                lista_cidades.Clear();
+
+                arr_bairros.ForEach(item => lista_bairros.Add(item));
             }
+            catch (Exception ex) 
+            {
+               await DisplayAlert("Erro", ex.Message, "Ok");
+            }
+
         }
     }
 }

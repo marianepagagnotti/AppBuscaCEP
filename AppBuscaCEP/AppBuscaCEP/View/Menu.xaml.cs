@@ -18,9 +18,16 @@ namespace AppBuscaCEP.View
             InitializeComponent();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void BairrosPorCidade(object sender, EventArgs e)
         {
-            
+            try
+            {
+                Navigation.PushAsync(new BairrosPorCidade());
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("Ops", ex.Message, "OK");
+            }
         }
 
         private void CepPorLogradouro(object sender, EventArgs e)
@@ -33,6 +40,11 @@ namespace AppBuscaCEP.View
             {
                 DisplayAlert("Ops", ex.Message, "OK");
             }
+        }
+
+        private void Button_Clicked_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
