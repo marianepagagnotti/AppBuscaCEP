@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppBuscaCEP.App">
     <Application.Resources>
-
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="CadetBlue"/>
+            <Setter Property="BarTextColor" Value="AntiqueWhite"/>
+        </Style>
     </Application.Resources>
 </Application>

@@ -46,5 +46,17 @@ namespace AppBuscaCEP.View
         {
 
         }
+
+        private void CidadePorUf(object sender, EventArgs e)
+        {
+            try
+            {
+                Navigation.PushAsync(new CidadePorUf());
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("Ops", ex.Message, "OK");
+            }
+        }
     }
 }

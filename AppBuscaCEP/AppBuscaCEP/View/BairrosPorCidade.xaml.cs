@@ -33,16 +33,24 @@ namespace AppBuscaCEP.View
         {
             try
             {
-
                 Picker disparador = sender as Picker;
 
-                string estado_selecionado = disparador.SelectedItem as string;
+                string estado = disparador.SelectedItem as string;
 
-                List<Cidade> arr_cidades = await DataService.GetCidadeByEstado(estado_selecionado);
+                List<Cidade> arr_cidades = await DataService.GetCidadeByUF(estado);
+
+                Console.Write("QNT CIDADES ================== ");
+                Console.WriteLine(arr_cidades.Count);
+
+
+                arr_cidades.ForEach(i => Console.WriteLine(i.descricao));
+
                 lista_cidades.Clear();
-
                 arr_cidades.ForEach(i => lista_cidades.Add(i));
 
+
+
+                //arr_cidades.ForEach(i => Console.WriteLine(i.descricaoCidade));
             }
             catch (Exception ex)
             {
@@ -55,19 +63,19 @@ namespace AppBuscaCEP.View
         {
             try
             {
-
                 Picker disparador = sender as Picker;
 
-                int id_cidade = disparador.SelectedIndex;
+                Cidade cidade_selecionada = disparador.SelectedItem as Cidade;
 
-                List<Bairro> arr_bairros = await DataService.GetBairrosByIdCidade(id_cidade);
-                lista_cidades.Clear();
+
+                List<Bairro> arr_bairros = await DataService.GetBairrosByIdCidade(cidade_selecionada.id_cidade);
+                lista_bairros.Clear();
 
                 arr_bairros.ForEach(item => lista_bairros.Add(item));
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-               await DisplayAlert("Erro", ex.Message, "Ok");
+                await DisplayAlert("Erro", ex.Message, "Ok");
             }
 
         }

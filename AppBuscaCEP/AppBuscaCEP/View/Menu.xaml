@@ -1,28 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppBuscaCEP.View.Menu">
+             x:Class="AppBuscaCEP.View.Menu" Title="APP BUSCA CEP">
     <ContentPage.Content>
-        <Grid ColumnDefinitions="*, *"
-              RowDefinitions="*, *, *, *">
+        <StackLayout Margin="20">
 
-            <Label Grid.Row="0" Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   Text="Api busca Cep"/>
+            <Label Text="Qual procedimento você deseja realizar?" FontSize="Subtitle" TextColor="Black" HorizontalTextAlignment="Center"/>
 
-            <Button Grid.Row="1" Grid.Column="0"
-                    Text="Buscar Cep" Clicked="CepPorLogradouro"/>
+            <Button Text="Buscar Cep" Clicked="CepPorLogradouro" BackgroundColor="CadetBlue" TextColor="AntiqueWhite"/>
 
-            <Button Grid.Row="1" Grid.Column="1"
-                    Text="Buscar Bairros" Clicked="BairrosPorCidade"/>
+            <Button Text="Buscar Bairros" Clicked="BairrosPorCidade" BackgroundColor="CadetBlue" TextColor="AntiqueWhite"/>
 
-            <Button Grid.Row="2" Grid.Column="0"
-                    Text="Buscar Ruas de Bairros"/>
-            
-            <Button Grid.Row="2" Grid.Column="1"
-                    Text=""/>
+            <Button Text="Buscar Cidade por Uf" Clicked="CidadePorUf" BackgroundColor="CadetBlue" TextColor="AntiqueWhite"/>
 
 
-        </Grid>
+
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
