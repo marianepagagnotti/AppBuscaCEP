@@ -58,5 +58,29 @@ namespace AppBuscaCEP.View
                 DisplayAlert("Ops", ex.Message, "OK");
             }
         }
+
+        private void EnderecoPorCep(object sender, EventArgs e)
+        {
+            try
+            {
+                Navigation.PushAsync(new EnderecoPorCep());
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("Ops", ex.Message, "OK");
+            }
+        }
+
+        private void EnderecoPorBairroECidade(object sender, EventArgs e)
+        {
+            try
+            {
+                Navigation.PushAsync(new EnderecoPorBairroECidade());
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("Ops", ex.Message, "OK");
+            }
+        }
     }
 }

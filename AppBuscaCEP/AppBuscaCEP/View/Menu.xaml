@@ -13,8 +13,9 @@
 
             <Button Text="Buscar Cidade por Uf" Clicked="CidadePorUf" BackgroundColor="CadetBlue" TextColor="AntiqueWhite"/>
 
+            <Button Text="Buscar Endereço por Cep" Clicked="EnderecoPorCep" BackgroundColor="CadetBlue" TextColor="AntiqueWhite"/>
 
-
+            <Button Text="Buscar Endereço por Bairro e Cidade" Clicked="EnderecoPorBairroECidade" BackgroundColor="CadetBlue" TextColor="AntiqueWhite"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
